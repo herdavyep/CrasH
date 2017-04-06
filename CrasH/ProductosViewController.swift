@@ -13,12 +13,14 @@ class ProductosViewController: UITableViewController {
         
     var almacenId: Almacen!
     
+    var categoria: CategoriaProductos!
+    
     var productos: [Productos] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         self.title = almacenId.nombre
+         self.title = categoria.nombreCategoria
         
     
         // Uncomment the following line to preserve selection between presentations
@@ -108,7 +110,15 @@ class ProductosViewController: UITableViewController {
 
         let celda = tableView.dequeueReusableCell(withIdentifier: celdaID, for: indexPath) as! CeldaDeProducto
         
-        switch producto.id_almacen {
+        celda.imagenProducto.image = producto.imagenProducto
+        celda.nombreProducto.text = producto.nombre
+        celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+        celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+        celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
+        celda.productosDisponibles.text = String(producto.productosDisponibles)
+        celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
+        
+        /*switch producto.id_almacen {
             
         case 1:
             celda.imagenProducto.image = producto.imagenProducto
@@ -119,82 +129,95 @@ class ProductosViewController: UITableViewController {
             celda.productosDisponibles.text = String(producto.productosDisponibles)
             celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
 
-        /*case 2:
+        case 2:
             celda.imagenProducto.image = producto.imagenProducto
             celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = producto.presentacion
-            celda.precioProducto.text = String(producto.precio)
-            celda.porcentajeDescuento.text = String(producto.porcentajeDescuento)
+            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
             celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = String(producto.vencimientoOferta)
+            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
 
         case 3:
             
             celda.imagenProducto.image = producto.imagenProducto
             celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = producto.presentacion
-            celda.precioProducto.text = String(producto.precio)
-            celda.porcentajeDescuento.text = String(producto.porcentajeDescuento)
+            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
             celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = String(producto.vencimientoOferta)
+            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
 
         case 4:
             
             celda.imagenProducto.image = producto.imagenProducto
             celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = producto.presentacion
-            celda.precioProducto.text = String(producto.precio)
-            celda.porcentajeDescuento.text = String(producto.porcentajeDescuento)
+            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
             celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = String(producto.vencimientoOferta)
+            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
             
         case 5:
             
             celda.imagenProducto.image = producto.imagenProducto
             celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = producto.presentacion
-            celda.precioProducto.text = String(producto.precio)
-            celda.porcentajeDescuento.text = String(producto.porcentajeDescuento)
+            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
             celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = String(producto.vencimientoOferta)
+            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
             
         case 6:
             
             celda.imagenProducto.image = producto.imagenProducto
             celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = producto.presentacion
-            celda.precioProducto.text = String(producto.precio)
-            celda.porcentajeDescuento.text = String(producto.porcentajeDescuento)
+            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
             celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = String(producto.vencimientoOferta)
+            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
             
         case 7:
             
             celda.imagenProducto.image = producto.imagenProducto
             celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = producto.presentacion
-            celda.precioProducto.text = String(producto.precio)
-            celda.porcentajeDescuento.text = String(producto.porcentajeDescuento)
+            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
             celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = String(producto.vencimientoOferta)
+            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
             
         case 8:
             
             celda.imagenProducto.image = producto.imagenProducto
             celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = producto.presentacion
-            celda.precioProducto.text = String(producto.precio)
-            celda.porcentajeDescuento.text = String(producto.porcentajeDescuento)
+            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
             celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = String(producto.vencimientoOferta)*/
+            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
             
         default:
             break
-        }
+        }*/
         
         
         return celda
     }
+    
+    
+    // MARK: - Navigation
+
+    
+    
+    @IBAction func unwindSegueProductos(segue: UIStoryboardSegue) {
+        
+    }
+    
+
+    
+    
     
 
     /*
@@ -233,13 +256,24 @@ class ProductosViewController: UITableViewController {
     */
 
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    @IBAction func unwindSegueProductos(segue: UIStoryboardSegue) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
+   
+     //In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "VerProductos" {
+            
+            if let indexPath = self.tableView.indexPathForSelectedRow{
+                
+                let recetaSeleccionada = self.almacenes[indexPath.row]
+                
+                let destinationViewController = segue.destination as! ProductosViewController
+                
+                destinationViewController.almacenId = recetaSeleccionada
+            }
+        }
+    }*/
     
 
 }

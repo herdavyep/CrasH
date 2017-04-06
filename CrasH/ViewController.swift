@@ -90,15 +90,15 @@ class ViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "VerProductos" {
+        if segue.identifier == "VerCategorias" {
             
             if let indexPath = self.tableView.indexPathForSelectedRow{
                 
                 let recetaSeleccionada = self.almacenes[indexPath.row]
                 
-                let destinationViewController = segue.destination as! ProductosViewController
+                let destinationViewController = segue.destination as! CategoriaViewController
                 
-                destinationViewController.almacenId = recetaSeleccionada
+                destinationViewController.almacen = recetaSeleccionada
             }
         }
     }
