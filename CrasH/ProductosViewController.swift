@@ -118,93 +118,9 @@ class ProductosViewController: UITableViewController {
         celda.productosDisponibles.text = String(producto.productosDisponibles)
         celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
         
-        /*switch producto.id_almacen {
-            
-        case 1:
-            celda.imagenProducto.image = producto.imagenProducto
-            celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
-            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
-            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
-            celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
-
-        case 2:
-            celda.imagenProducto.image = producto.imagenProducto
-            celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
-            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
-            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
-            celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
-
-        case 3:
-            
-            celda.imagenProducto.image = producto.imagenProducto
-            celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
-            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
-            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
-            celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
-
-        case 4:
-            
-            celda.imagenProducto.image = producto.imagenProducto
-            celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
-            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
-            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
-            celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
-            
-        case 5:
-            
-            celda.imagenProducto.image = producto.imagenProducto
-            celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
-            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
-            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
-            celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
-            
-        case 6:
-            
-            celda.imagenProducto.image = producto.imagenProducto
-            celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
-            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
-            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
-            celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
-            
-        case 7:
-            
-            celda.imagenProducto.image = producto.imagenProducto
-            celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
-            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
-            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
-            celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
-            
-        case 8:
-            
-            celda.imagenProducto.image = producto.imagenProducto
-            celda.nombreProducto.text = producto.nombre
-            celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
-            celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
-            celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
-            celda.productosDisponibles.text = String(producto.productosDisponibles)
-            celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
-            
-        default:
-            break
-        }*/
         
         
-        return celda
-    }
+        return celda    }
     
     
     // MARK: - Navigation
@@ -212,6 +128,21 @@ class ProductosViewController: UITableViewController {
     
     
     @IBAction func unwindSegueProductos(segue: UIStoryboardSegue) {
+        
+        if segue.identifier == "unwindSegueProductos" {
+        
+            if let productoCreadoVC = segue.source as? AgregarProducto{
+                
+                if let nuevoProducto = productoCreadoVC.producto{
+                
+                    self.productos.append(nuevoProducto)
+                
+                    self.tableView.reloadData()
+                    
+                }
+            }
+        }
+        
         
     }
     
@@ -274,6 +205,89 @@ class ProductosViewController: UITableViewController {
             }
         }
     }*/
-    
+    /*switch producto.id_almacen {
+     
+     case 1:
+     celda.imagenProducto.image = producto.imagenProducto
+     celda.nombreProducto.text = producto.nombre
+     celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+     celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+     celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
+     celda.productosDisponibles.text = String(producto.productosDisponibles)
+     celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
+     
+     case 2:
+     celda.imagenProducto.image = producto.imagenProducto
+     celda.nombreProducto.text = producto.nombre
+     celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+     celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+     celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
+     celda.productosDisponibles.text = String(producto.productosDisponibles)
+     celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
+     
+     case 3:
+     
+     celda.imagenProducto.image = producto.imagenProducto
+     celda.nombreProducto.text = producto.nombre
+     celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+     celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+     celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
+     celda.productosDisponibles.text = String(producto.productosDisponibles)
+     celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
+     
+     case 4:
+     
+     celda.imagenProducto.image = producto.imagenProducto
+     celda.nombreProducto.text = producto.nombre
+     celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+     celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+     celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
+     celda.productosDisponibles.text = String(producto.productosDisponibles)
+     celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
+     
+     case 5:
+     
+     celda.imagenProducto.image = producto.imagenProducto
+     celda.nombreProducto.text = producto.nombre
+     celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+     celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+     celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
+     celda.productosDisponibles.text = String(producto.productosDisponibles)
+     celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
+     
+     case 6:
+     
+     celda.imagenProducto.image = producto.imagenProducto
+     celda.nombreProducto.text = producto.nombre
+     celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+     celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+     celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
+     celda.productosDisponibles.text = String(producto.productosDisponibles)
+     celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
+     
+     case 7:
+     
+     celda.imagenProducto.image = producto.imagenProducto
+     celda.nombreProducto.text = producto.nombre
+     celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+     celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+     celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
+     celda.productosDisponibles.text = String(producto.productosDisponibles)
+     celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
+     
+     case 8:
+     
+     celda.imagenProducto.image = producto.imagenProducto
+     celda.nombreProducto.text = producto.nombre
+     celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
+     celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
+     celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
+     celda.productosDisponibles.text = String(producto.productosDisponibles)
+     celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
+     
+     default:
+     break
+     }*/
+
 
 }

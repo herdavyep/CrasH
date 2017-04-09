@@ -96,7 +96,9 @@
                             <outlet property="delegate" destination="2pp-xO-0ZS" id="CMm-mY-oh2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Almacenes" id="c1e-hj-6P6"/>
+                    <navigationItem key="navigationItem" title="Almacenes" id="c1e-hj-6P6">
+                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="dIb-SF-Haj"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xm2-Yj-RhS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -340,12 +342,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Crear Producto" id="s2H-z4-3Oy">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2jx-5d-1t1">
+                        <barButtonItem key="leftBarButtonItem" image="cancelar" id="2jx-5d-1t1">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
-                                <segue destination="u5i-Je-Zzx" kind="unwind" unwindAction="unwindSegueProductosWithSegue:" id="0gB-ni-ah5"/>
+                                <segue destination="u5i-Je-Zzx" kind="unwind" identifier="unwindSegueProductos" unwindAction="unwindSegueProductosWithSegue:" id="0gB-ni-ah5"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="PEo-RI-EBd">
+                        <barButtonItem key="rightBarButtonItem" image="guardar" style="plain" id="PEo-RI-EBd">
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="GuardarProductos:" destination="FV2-9b-FNb" id="SqN-Aa-UOo"/>
                             </connections>
@@ -479,7 +483,14 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="cIW-t4-2tW"/>
+                    <navigationItem key="navigationItem" id="cIW-t4-2tW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PoQ-s6-Gac">
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="FV2-9b-FNb" kind="show" id="bDG-UE-zea"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfc-Kc-Dzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -748,6 +759,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="nku-W7-FM3">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="TVZ-Zm-On5">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <segue destination="FV2-9b-FNb" kind="show" id="CLg-Nf-M5V"/>
                             </connections>
@@ -778,7 +790,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cancelar" width="32" height="32"/>
         <image name="dedo presionando" width="53" height="53"/>
+        <image name="guardar" width="36" height="36"/>
         <image name="imagenplasholder" width="147" height="85"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="CLg-Nf-M5V"/>
+    </inferredMetricsTieBreakers>
 </document>

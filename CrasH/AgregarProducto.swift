@@ -26,6 +26,8 @@ class AgregarProducto: UITableViewController, UIImagePickerControllerDelegate, U
     
     @IBOutlet var idAlmacen: UITextField!
     
+    var producto: Productos?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,35 @@ class AgregarProducto: UITableViewController, UIImagePickerControllerDelegate, U
 
     
     @IBAction func GuardarProductos(_ sender: UIBarButtonItem) {
+        
+        if let nombreProducto = self.nombreProducto.text,
+         let presentacionProducto = self.presentacionProducto.text,
+         let precioProducto = Int(self.precioProducto.text!),
+         let vencimientoOferta = Int(self.vencimientoOferta.text!),
+         let productosDisponibles = Int(self.productosDisponibles.text!),
+         let porcentajeDescuento = Int(self.porcentageDescuento.text!),
+         let idAlmacen = Int(self.idAlmacen.text!),
+         let laImagen = self.imagenProducto.image   {
+        
+            self.producto = Productos(nombre: nombreProducto, presentacion: presentacionProducto, precio: Int(precioProducto), vencimientoOferta: vencimientoOferta, productosDisponibles: productosDisponibles, porcentajeDescuento: porcentajeDescuento, imagenProducto: laImagen, id_almacen: idAlmacen)
+            
+            print(self.producto!.nombre)
+            
+            
+            self.performSegue(withIdentifier: "unwindSegueProductos", sender: self)
+            
+        }else{
+            
+            let alerta = UIAlertController(title: "Falta algun Campo", message: "Revisa que esten todos los campos completos", preferredStyle: .alert)
+            
+            let accionAlerta = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alerta.addAction(accionAlerta)
+            
+            self.present(alerta, animated: true, completion: nil)
+            
+        }
+        
+        
     }
     
     

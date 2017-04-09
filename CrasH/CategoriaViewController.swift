@@ -19,7 +19,7 @@ class CategoriaViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = almacen.nombre
+        self.title = "Categoria de \(almacen.nombre!)"
         
         var categoria = CategoriaProductos(id_categoria: 1,nombreCategoria: "Lacteos", imagenCategoria: #imageLiteral(resourceName: "lacteos"))
         categorias.append(categoria)
