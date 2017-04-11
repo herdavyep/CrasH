@@ -5,21 +5,24 @@
 //  Created by Heriberto David Yepes on 26/03/17.
 //  Copyright © 2017 Heriberto David Yepes. All rights reserved.
 //
-
+import Foundation
 import UIKit
+import CoreData
 
-class Productos: NSObject {
+//@objc(Productos)
+
+class Productos: NSManagedObject {
     
-    var nombre: String!
-    var presentacion: String!
-    var precio: Int!
-    var vencimientoOferta: Int!
-    var productosDisponibles: Int!
-    var porcentajeDescuento: Int!
-    var imagenProducto: UIImage!
-    var id_almacen: Int!
+    @NSManaged var nombre: String
+    @NSManaged var presentacion: String
+    @NSManaged var precio: Int
+    @NSManaged var vencimientoOferta: Int
+    @NSManaged var productosDisponibles: Int
+    @NSManaged var porcentajeDescuento: Int
+    @NSManaged var imagenProducto: NSData?
+    @NSManaged var id_almacen: Int
     
-    init(nombre:String,presentacion:String,precio:Int,vencimientoOferta:Int,productosDisponibles:Int,porcentajeDescuento:Int,imagenProducto:UIImage,id_almacen:Int) {
+   /* init(nombre:String,presentacion:String,precio:Int,vencimientoOferta:Int,productosDisponibles:Int,porcentajeDescuento:Int,imagenProducto:UIImage,id_almacen:Int) {
         
         self.nombre = nombre
         self.presentacion = presentacion
@@ -30,7 +33,7 @@ class Productos: NSObject {
         self.imagenProducto = imagenProducto
         self.id_almacen = id_almacen
         
-    }
+    }*/
     
 
 }

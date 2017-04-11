@@ -29,7 +29,7 @@ class ProductosViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-                
+       /*
         var producto : Productos!
         
         switch almacenId.id_almacen {
@@ -80,7 +80,7 @@ class ProductosViewController: UITableViewController {
         default:
             break
         }
-        
+        */
         
     }
 
@@ -110,17 +110,18 @@ class ProductosViewController: UITableViewController {
 
         let celda = tableView.dequeueReusableCell(withIdentifier: celdaID, for: indexPath) as! CeldaDeProducto
         
-        celda.imagenProducto.image = producto.imagenProducto
+        celda.imagenProducto.image = UIImage (data:producto.imagenProducto! as Data)
         celda.nombreProducto.text = producto.nombre
-        celda.presentacionProducto.text = "Presentacion: \(producto.presentacion!)"
-        celda.precioProducto.text = "Precio: $\(producto.precio!) pesos"
-        celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento!)%"
+        celda.presentacionProducto.text = "Presentacion: \(producto.presentacion)"
+        celda.precioProducto.text = "Precio: $\(producto.precio) pesos"
+        celda.porcentajeDescuento.text = "-\(producto.porcentajeDescuento)%"
         celda.productosDisponibles.text = String(producto.productosDisponibles)
-        celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta!) dias"
+        celda.vencimientoOferta.text = "Oferta vence en: \(producto.vencimientoOferta) dias"
         
         
         
-        return celda    }
+        return celda
+    }
     
     
     // MARK: - Navigation

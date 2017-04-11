@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AgregarProducto: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
     
@@ -58,13 +59,43 @@ class AgregarProducto: UITableViewController, UIImagePickerControllerDelegate, U
          let porcentajeDescuento = Int(self.porcentageDescuento.text!),
          let idAlmacen = Int(self.idAlmacen.text!),
          let laImagen = self.imagenProducto.image   {
+            
+            
+            if let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer{
+                
+                let context = container.viewContext
+                
+                self.producto = NSEntityDescription.insertNewObject(forEntityName: "Prod", into: context) as? Productos
+                
+                self.producto?.nombre = nombreProducto
+                self.producto?.presentacion = presentacionProducto
+                self.producto?.precio = precioProducto
+                self.producto?.vencimientoOferta = vencimientoOferta
+                self.producto?.productosDisponibles = productosDisponibles
+                self.producto?.porcentajeDescuento = porcentajeDescuento
+                self.producto?.id_almacen = idAlmacen
+                self.producto?.imagenProducto = UIImagePNGRepresentation(laImagen) as NSData?
+
+                
+                do {
+                    
+                    try context.save()
+                    
+                }catch{
+                    
+                    print("Ocurrio un error al guardar en Core Data")
+                }
+                
+                
+            }
         
-            self.producto = Productos(nombre: nombreProducto, presentacion: presentacionProducto, precio: Int(precioProducto), vencimientoOferta: vencimientoOferta, productosDisponibles: productosDisponibles, porcentajeDescuento: porcentajeDescuento, imagenProducto: laImagen, id_almacen: idAlmacen)
+            /*self.producto = Productos(nombre: nombreProducto, presentacion: presentacionProducto, precio: Int(precioProducto), vencimientoOferta: vencimientoOferta, productosDisponibles: productosDisponibles, porcentajeDescuento: porcentajeDescuento, imagenProducto: laImagen, id_almacen: idAlmacen)
             
-            print(self.producto!.nombre)
-            
+            print(self.producto!.nombre)*/
             
             self.performSegue(withIdentifier: "unwindSegueProductos", sender: self)
+
+         
             
         }else{
             
@@ -76,6 +107,7 @@ class AgregarProducto: UITableViewController, UIImagePickerControllerDelegate, U
             self.present(alerta, animated: true, completion: nil)
             
         }
+        
         
         
     }
@@ -105,7 +137,7 @@ class AgregarProducto: UITableViewController, UIImagePickerControllerDelegate, U
     }
     
     
-     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
+      func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
         
         self.imagenProducto.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         self.imagenProducto.contentMode = .scaleAspectFill
